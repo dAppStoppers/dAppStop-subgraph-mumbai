@@ -1,6 +1,8 @@
-type ExampleEntity @entity {
+type Dapp @entity {
   id: ID!
-  count: BigInt!
-  buyer: Bytes! # address
+  creator: Bytes!
+  popURI: String!
+  ceramicURI: String!
+  price: BigInt!
   dappId: BigInt! # uint256
 }

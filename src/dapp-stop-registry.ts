@@ -1,61 +1,45 @@
-import { BigInt } from "@graphprotocol/graph-ts"
 import {
-  DappStopRegistry,
   Bought,
+  DappStopRegistry,
   Registered,
-  Updated
-} from "../generated/DappStopRegistry/DappStopRegistry"
-import { ExampleEntity } from "../generated/schema"
+  Updated,
+} from "../generated/DappStopRegistry/DappStopRegistry";
 
-export function handleBought(event: Bought): void {
-  // Entities can be loaded from the store using a string ID; this ID
-  // needs to be unique across all entities of the same type
-  let entity = ExampleEntity.load(event.transaction.from.toHex())
+import { BigInt } from "@graphprotocol/graph-ts";
+import { Dapp } from "../generated/schema";
 
-  // Entities only exist after they have been saved to the store;
-  // `null` checks allow to create entities on demand
-  if (!entity) {
-    entity = new ExampleEntity(event.transaction.from.toHex())
+// export function handleBought(event: Bought): void {}
 
-    // Entity fields can be set using simple assignments
-    entity.count = BigInt.fromI32(0)
+export function handleRegistered(event: Registered): void {
+  let tokenId = event.params.dappId;
+  let id = event.address.toHex() + "_" + tokenId.toString();
+  let dapp = Dapp.load(id);
+
+  if (!dapp) {
+    dapp = new Dapp(id);
   }
 
-  // BigInt and BigDecimal math are supported
-  entity.count = entity.count + BigInt.fromI32(1)
-
-  // Entity fields can be set based on event parameters
-  entity.buyer = event.params.buyer
-  entity.dappId = event.params.dappId
-
-  // Entities can be written to the store with `.save()`
-  entity.save()
-
-  // Note: If a handler doesn't require existing field values, it is faster
-  // _not_ to load the entity from the store. Instead, create it fresh with
-  // `new Entity(...)`, set the fields that should be updated and save the
-  // entity back to the store. Fields that were not set or unset remain
-  // unchanged, allowing for partial updates to be applied.
-
-  // It is also possible to access smart contracts from mappings. For
-  // example, the contract that has emitted the event can be connected to
-  // with:
-  //
-  // let contract = Contract.bind(event.address)
-  //
-  // The following functions can then be called on this contract to access
-  // state variables and other data:
-  //
-  // - contract.DAPPSTOP_POP(...)
-  // - contract.dappInfo(...)
-  // - contract.getCeramicURI(...)
-  // - contract.getCreator(...)
-  // - contract.getDappCount(...)
-  // - contract.getDappInfo(...)
-  // - contract.getPoPURI(...)
-  // - contract.getPrice(...)
+  dapp.creator = event.params.dappInfo.creator;
+  dapp.dappId = event.params.dappId;
+  dapp.popURI = event.params.dappInfo.popURI;
+  dapp.ceramicURI = event.params.dappInfo.ceramicURI;
+  dapp.price = event.params.dappInfo.price;
+  dapp.save();
 }
 
-export function handleRegistered(event: Registered): void {}
+export function handleUpdated(event: Updated): void {
+  let tokenId = event.params.dappId;
+  let id = event.address.toHex() + "_" + tokenId.toString();
+  let dapp = Dapp.load(id);
 
-export function handleUpdated(event: Updated): void {}
+  if (!dapp) {
+    dapp = new Dapp(id);
+  }
+
+  dapp.creator = event.params.dappInfo.creator;
+  dapp.dappId = event.params.dappId;
+  dapp.popURI = event.params.dappInfo.popURI;
+  dapp.ceramicURI = event.params.dappInfo.ceramicURI;
+  dapp.price = event.params.dappInfo.price;
+  dapp.save();
+}
