@@ -1,0 +1,224 @@
+[
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "dappId",
+        "type": "uint256"
+      }
+    ],
+    "name": "Bought",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "dappId",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          { "internalType": "address", "name": "creator", "type": "address" },
+          { "internalType": "string", "name": "popURI", "type": "string" },
+          { "internalType": "string", "name": "ceramicURI", "type": "string" },
+          { "internalType": "uint256", "name": "price", "type": "uint256" }
+        ],
+        "indexed": false,
+        "internalType": "struct IDappStopRegistry.DappInfo",
+        "name": "dappInfo",
+        "type": "tuple"
+      }
+    ],
+    "name": "Registered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "dappId",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          { "internalType": "address", "name": "creator", "type": "address" },
+          { "internalType": "string", "name": "popURI", "type": "string" },
+          { "internalType": "string", "name": "ceramicURI", "type": "string" },
+          { "internalType": "uint256", "name": "price", "type": "uint256" }
+        ],
+        "indexed": false,
+        "internalType": "struct IDappStopRegistry.DappInfo",
+        "name": "dappInfo",
+        "type": "tuple"
+      }
+    ],
+    "name": "Updated",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "DAPPSTOP_POP",
+    "outputs": [
+      { "internalType": "contract DappStopPoP", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_dappId", "type": "uint256" }
+    ],
+    "name": "buy",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "dappInfo",
+    "outputs": [
+      { "internalType": "address", "name": "creator", "type": "address" },
+      { "internalType": "string", "name": "popURI", "type": "string" },
+      { "internalType": "string", "name": "ceramicURI", "type": "string" },
+      { "internalType": "uint256", "name": "price", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_dappId", "type": "uint256" }
+    ],
+    "name": "getCeramicURI",
+    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_dappId", "type": "uint256" }
+    ],
+    "name": "getCreator",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getDappCount",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_dappId", "type": "uint256" }
+    ],
+    "name": "getDappInfo",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "address", "name": "creator", "type": "address" },
+          { "internalType": "string", "name": "popURI", "type": "string" },
+          { "internalType": "string", "name": "ceramicURI", "type": "string" },
+          { "internalType": "uint256", "name": "price", "type": "uint256" }
+        ],
+        "internalType": "struct IDappStopRegistry.DappInfo",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_dappId", "type": "uint256" }
+    ],
+    "name": "getPoPURI",
+    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_dappId", "type": "uint256" }
+    ],
+    "name": "getPrice",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          { "internalType": "address", "name": "creator", "type": "address" },
+          { "internalType": "string", "name": "popURI", "type": "string" },
+          { "internalType": "string", "name": "ceramicURI", "type": "string" },
+          { "internalType": "uint256", "name": "price", "type": "uint256" }
+        ],
+        "internalType": "struct IDappStopRegistry.DappInfo",
+        "name": "_dappInfo",
+        "type": "tuple"
+      }
+    ],
+    "name": "register",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract DappStopPoP",
+        "name": "_DAPPSTOP_POP",
+        "type": "address"
+      }
+    ],
+    "name": "setPOP",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_dappId", "type": "uint256" },
+      {
+        "components": [
+          { "internalType": "address", "name": "creator", "type": "address" },
+          { "internalType": "string", "name": "popURI", "type": "string" },
+          { "internalType": "string", "name": "ceramicURI", "type": "string" },
+          { "internalType": "uint256", "name": "price", "type": "uint256" }
+        ],
+        "internalType": "struct IDappStopRegistry.DappInfo",
+        "name": "_dappInfo",
+        "type": "tuple"
+      }
+    ],
+    "name": "update",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  }
+]
