@@ -6,3 +6,15 @@ type Dapp @entity {
   price: BigInt!
   dappId: BigInt! # uint256
 }
+
+type EpnsNotificationCounter @entity {
+  id: ID!
+  totalCount: BigInt!
+}
+
+type EpnsPushNotification @entity {
+  id: ID!
+  notificationNumber: BigInt!
+  recipient: String!
+  notification: String!
+}

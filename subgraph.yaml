@@ -6,9 +6,9 @@ dataSources:
     name: DappStopRegistry
     network: mumbai
     source:
-      address: "0x7e912cbcEe54Bf7A70fA97B338Ebc79276AE3bc7"
+      address: "0x6e95ab8Ac7FB84baA9B54ad81D1E5b9Ea3dc19D8"
       abi: DappStopRegistry
-      startBlock: 28516030
+      startBlock: 28516020
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
